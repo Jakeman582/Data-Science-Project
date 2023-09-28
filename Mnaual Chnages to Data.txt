@@ -1,0 +1,9 @@
+Scrape Data:
+	One of the songs in the 1900-1909.thml file had from 1906 had to be changed from 
+
+		<li>4/21; Corinne Morgan &#8220;So Long Mary&#8221; (BB: 3)
+	to 
+
+		<li>4/21: Corinne Morgan &#8220;So Long Mary&#8221; (BB: 3)
+
+	so that the parser could always find the : that is in all other song list items in every single HTML page
