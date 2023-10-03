@@ -56,6 +56,20 @@ def get_top_tracks(token, artist_id):
 
     return json_result
 
+def get_song_id(token, artist, track):
+
+    url = "https://api.spotify.com/v1/search"
+    query = f"q={track}&artist={artist}"
+    options = "type=track&market=US&limit=1&offset=0"
+
+    search_url = url + "?" + query + "&" + options
+    headers = get_authorization_header(token)
+
+    result = get(search_url, headers = headers)
+    json_result = json.loads(result.content)["tracks"]["items"][0]["id"]
+
+    return json.dumps(json_result, indent = 4)
+
 if __name__ == "__main__":
 
     load_dotenv()
@@ -68,5 +82,8 @@ if __name__ == "__main__":
     artist_id = result["id"]
     songs = get_top_tracks(token, artist_id)
     
-    for index, song in enumerate(songs):
-        print(f"{index + 1}.) {song['name']}")
+    #for index, song in enumerate(songs):
+        #print(f"{index + 1}.) {song['name']}")
+    
+    song_name = get_song_id(token, "AC/DC", "Highway%20to%20Hell")
+    print(song_name[1:-1])
