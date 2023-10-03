@@ -1,6 +1,6 @@
 # Data Science Project (DS501)
 
-## Preliminary title: "The times, they are 'a changin': AMerican Music trends of the past century"
+## Preliminary title: "The times, They Are 'a Changin': American Music trends of the Past Century"
 
 This repo holds all of the code I'm developing for my class project. I'm going to document the whole process including 
  * Data collection
