@@ -59,7 +59,7 @@ if __name__ == "__main__":
 
                 # Extract the part of the text containing the song's title
                 song_title = song.text.rsplit("\u201c", 1)[1].split("\u201d")[0]    # \u201d is a right double quote character
-
+                
                 # Make sure to save the song so they can be analyzed later
                 songs.append((song_year, rank, song_author, song_title))
 
@@ -71,6 +71,6 @@ if __name__ == "__main__":
 
     # If the specified save file does not exist, we should just create it
     with open(sys.argv[2], "w") as file:
-        song_writer = csv.writer(file, delimiter = "\t")
+        song_writer = csv.writer(file, delimiter = "\t", lineterminator="\n")
         for song in songs:
             song_writer.writerow(song)

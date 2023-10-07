@@ -2,8 +2,20 @@ Scrape Data:
 	One of the songs in the 1900-1909.html file had from 1906 had to be changed from 
 
 		<li>4/21; Corinne Morgan &#8220;So Long Mary&#8221; (BB: 3)
+
 	to 
 
 		<li>4/21: Corinne Morgan &#8220;So Long Mary&#8221; (BB: 3)
 
 	so that the parser could always find the : that is in all other song list items in every single HTML page
+
+
+
+
+	One of the songs in the 1950-1959.html file was delimited by a double start quote, and a single end quote. I changed it from
+
+		<li>3/11: Frankie Laine with Harry Geller&#8217;s Orchestra &#8220;The Cry of the Wild Goose&#8217; (DJ: 2)
+
+	to
+		
+		<li>3/11: Frankie Laine with Harry Geller&#8217;s Orchestra &#8220;The Cry of the Wild Goose&#8221; (DJ: 2)
