@@ -26,6 +26,10 @@ if __name__ == "__main__":
     # Collect information from the Kaggle dataset
     with open("1958_2021.csv", "r") as file:
         song_reader = csv.reader(file)
+
+        # Skip the header row
+        next(song_reader)
+
         for row in song_reader:
             year = row[0].split("-")[0]
             if year >= "1960":
