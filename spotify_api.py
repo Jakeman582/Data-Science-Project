@@ -40,11 +40,8 @@ def get_song_id(token, artist, track):
     headers = get_authorization_header(token)
 
     result = get(search_url, headers = headers)
-    #json_result = json.loads(result.content)["tracks"]["items"][0]["id"]
-    #print(json.dumps(json.loads(result.content)["tracks"]["items"], indent = 4))
 
     json_result = json.loads(result.content)["tracks"]["items"]
-    #print(json.dumps(json_result, indent = 4))
     if len(json_result) != 0:
         return json_result[0]["id"]
 
@@ -58,7 +55,6 @@ def get_track_features(token, track_id):
     result = get(url, headers = headers)
     json_result = json.loads(result.content)
 
-    #print(json.dumps(json_result, indent = 4))
     return json_result
 
 if __name__ == "__main__":
@@ -69,18 +65,12 @@ if __name__ == "__main__":
     client_secret = os.getenv("CLIENT_SECRET")
 
     token = request_token(client_id, client_secret)
-
-    """ song_id = get_song_id(token, "AC/DC", "Highway to Hell")
-    song_features = get_track_features(token, song_id)
-    print(song_features) """
     
     # Get all the songs to search for
     songs = []
     with open("data/songs.csv") as file:
         song_reader = csv.reader(file, delimiter = "\t")
-        #song = []
         for row in song_reader:
-            #print(row[2] + " -> " + row[3])
             songs.append([row[0], row[1]])
     
     # Tokens expire in an hour, so track how much time has elapsed
@@ -92,14 +82,10 @@ if __name__ == "__main__":
     
         # Query the Spotify API
         for song in songs[0:]:
-            #time_start = datetime.now()
-            #print(song)
             song_id = get_song_id(token, song[0], song[1])
 
-            #print(song_id)
             if len(song_id) != 0:
                 song_features = get_track_features(token, song_id)
-                #print(song_features)
                 song.append(song_features["acousticness"])
                 song.append(song_features["danceability"])
                 song.append(song_features["duration_ms"])
@@ -129,7 +115,6 @@ if __name__ == "__main__":
                 song.append("")
 
             sleep(1.0)
-            #time_spent += datetime.now() - time_start
 
             # Check if we're within 10 seconds of one hour to refresh the token
             if (datetime.now() - time_start).seconds > 3590:

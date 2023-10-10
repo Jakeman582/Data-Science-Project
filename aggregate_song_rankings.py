@@ -8,12 +8,12 @@ import csv
 
 if __name__ == "__main__":
 
-    AGGREGATED_DATA_FILE = "song_rankings.csv"
+    AGGREGATED_DATA_FILE = "data/song_rankings.csv"
 
     songs = []
 
     # Collect information from Dave's Music Database
-    with open("daves_music_database.csv", "r") as file:
+    with open("data/daves_music_database.csv", "r") as file:
         song_reader = csv.reader(file, delimiter = "\t")
         for row in song_reader:
             songs.append((
@@ -24,7 +24,7 @@ if __name__ == "__main__":
             ))
     
     # Collect information from the Kaggle dataset
-    with open("1958_2021.csv", "r") as file:
+    with open("data/1958_2021.csv", "r") as file:
         song_reader = csv.reader(file)
 
         # Skip the header row

@@ -3,7 +3,7 @@ import pandas as pd
 if __name__ == "__main__":
 
     song_data = pd.read_csv(
-        "song_rankings.csv", 
+        "data/song_rankings.csv", 
         delimiter = "\t", 
         names = ["year", "rank", "artist", "song"], 
         dtype = {
@@ -20,7 +20,7 @@ if __name__ == "__main__":
     )
 
     song_data_deduped.to_csv(
-        "songs.csv", 
+        "data/songs.csv", 
         sep = "\t", 
         lineterminator = "\n", 
         columns = ["artist", "song"]
